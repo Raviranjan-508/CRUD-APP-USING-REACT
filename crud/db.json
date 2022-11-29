@@ -1,0 +1,84 @@
+{
+    "users" : [
+        {
+            "id" : 1,
+            "name" : "ravi",
+            "email" : "ravi@gmail.com",
+            "address" : "UK",
+            "phone" : "9504660337",
+            "status" : "Active"
+        },
+        {
+            "id" : 2,
+            "name" : "jitendra",
+            "email" : "jitendra@gmail.com",
+            "address" : "UK",
+            "phone" : "9504660336",
+            "status" : "Active"
+        },
+        {
+            "id" : 3,
+            "name" : "monu",
+            "email" : "monu@gmail.com",
+            "address" : "USA",
+            "phone" : "9504660335",
+            "status" : "Inactive"
+        },
+        {
+            "id" : 4,
+            "name" : "aman",
+            "email" : "aman@gmail.com",
+            "address" : "USA",
+            "phone" : "9504660334",
+            "status" : "Inactive"
+        },
+        {
+            "id" : 5,
+            "name" : "neha",
+            "email" : "neha@gmail.com",
+            "address" : "Asia",
+            "phone" : "9504660333",
+            "status" : "Active"
+        },
+        {
+            "id" : 6,
+            "name" : "nikee",
+            "email" : "nikee@gmail.com",
+            "address" : "Asia",
+            "phone" : "9504660332",
+            "status" : "Active"
+        },
+        {
+            "id" : 7,
+            "name" : "kiran",
+            "email" : "kiran@gmail.com",
+            "address" : "India",
+            "phone" : "9504660331",
+            "status" : "Inactive"
+        },
+        {
+            "id" : 8,
+            "name" : "surya",
+            "email" : "surya@gmail.com",
+            "address" : "India",
+            "phone" : "9504660330",
+            "status" : "Inactive"
+        },
+        {
+            "id" : 9,
+            "name" : "aryan",
+            "email" : "aryan@gmail.com",
+            "address" : "UK",
+            "phone" : "9504660337",
+            "status" : "Active"
+        },
+        {
+            "id" : 10,
+            "name" : "loca",
+            "email" : "loca@gmail.com",
+            "address" : "UK",
+            "phone" : "9504660337",
+            "status" : "Active"
+        }
+    ]
+}
