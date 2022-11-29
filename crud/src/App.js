@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { MDBTable, MDBTableHead, MDBTableBody, MDBRow, MDBCol, MDBContainer } from "mdb-react-ui-kit";
+import { MDBTable, MDBTableHead, MDBTableBody, MDBRow, MDBCol, MDBContainer, MDBBtnGroup, MDBBtn } from "mdb-react-ui-kit";
 import './App.css';
 
 function App() {
 
   const [data, setData] = useState([]);
+  const [value , setValue] = useState(''); 
 
   useEffect(() => {
     loadUsersData();
@@ -25,6 +26,31 @@ function App() {
 
   return (
     <MDBContainer>
+      <form style={{
+        margin: "auto",
+        padding: "15px",
+        maxWidth: "400px",
+        alignContent: "center"
+      }}
+        className="d-flex input-group w-auto"
+        onSubmit={handleSearch}
+      >
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search Name ..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <MDBBtnGroup>
+          <MDBBtn  type='submit' color='dark'>Search</MDBBtn>
+          <MDBBtn className='mx-2' color='info' onClick={() => handleReset()}>Reset</MDBBtn>
+        </MDBBtnGroup>
+
+      </form>
+
+
+
       <div style={{ marginTop: "100px" }} >
         <h2>Search , Filter , Sort and Pagination using db.json</h2>
         <MDBRow>
