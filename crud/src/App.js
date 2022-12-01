@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { MDBTable, MDBTableHead, MDBTableBody, MDBRow, MDBCol, MDBContainer, MDBBtnGroup, MDBBtn } from "mdb-react-ui-kit";
+import { MDBTable, MDBTableHead, MDBTableBody, MDBRow, MDBCol, MDBContainer, MDBBtnGroup, MDBBtn, MDBPagination, MDBPaginationItem, MDBPaginationLink } from "mdb-react-ui-kit";
 import './App.css';
 
 function App() {
@@ -8,6 +8,8 @@ function App() {
   const [data, setData] = useState([]);
   const [value, setValue] = useState('');
   const [sortValue, setSortValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageLimit] = useState(4);
 
   const sortOptions = ["name", "address", "email", "phone", "status"];
 
@@ -19,7 +21,7 @@ function App() {
   // Fetch data from db.json
   const loadUsersData = async () => {
     return await axios
-      .get('http://localhost:3000/users')
+      .get('http://localhost:8080/users')
       .then((res) => {
         console.log(res.data)
         setData(res.data)
@@ -30,7 +32,7 @@ function App() {
   const handleSearch = async (e) => {
     e.preventDefault();
     return await axios
-      .get(`http://localhost:3000/users?q=${value}`)
+      .get(`http://localhost:8080/users?q=${value}`)
       .then((res) => {
         setData(res.data)
         setValue("")
@@ -45,7 +47,7 @@ function App() {
     setSortValue(value)
     e.preventDefault();
     return await axios
-      .get(`http://localhost:3000/users?_sort=${value}&_order=desc`)
+      .get(`http://localhost:8080/users?_sort=${value}&_order=desc`)
       .then((res) => {
         setData(res.data)
       })
@@ -56,7 +58,7 @@ function App() {
 
   const handleFilter = async (value) => {
     return await axios
-      .get(`http://localhost:3000/users?status=${value}`)
+      .get(`http://localhost:8080/users?status=${value}`)
       .then((res) => {
         setData(res.data)
       })
@@ -68,6 +70,21 @@ function App() {
   const handleReset = (e) => {
     loadUsersData();
   }
+
+  // const renderPagination = () => {
+  //   if (currentPage === 0) {
+  //     return (
+  //       <MDBPagination >
+  //         <MDBPaginationItem>
+  //           <MDBPaginationLink>1</MDBPaginationLink>
+  //         </MDBPaginationItem>
+  //         <MDBPaginationItem>
+  //           <MDBBtn onClick={() => loadUsersData(4 , 8 , 1) }>Next</MDBBtn>
+  //         </MDBPaginationItem>
+  //       </MDBPagination>
+  //     )
+  //   }
+  // }
 
   return (
     <MDBContainer>
@@ -156,13 +173,13 @@ function App() {
         </MDBCol>
 
         <MDBCol size="4">
-        <h3> Filter By Status: </h3>
-        <MDBBtnGroup>
+          <h3> Filter By Status: </h3>
+          <MDBBtnGroup>
             <MDBBtn color='success' onClick={() => handleFilter("Active")} >Active</MDBBtn>
             <MDBBtn color='danger'
-            style={{ marginLeft: "2px" }}
-            onClick={() => handleFilter("Inactive")} >Inactive</MDBBtn>
-        </MDBBtnGroup>
+              style={{ marginLeft: "2px" }}
+              onClick={() => handleFilter("Inactive")} >Inactive</MDBBtn>
+          </MDBBtnGroup>
         </MDBCol>
       </MDBRow>
 
